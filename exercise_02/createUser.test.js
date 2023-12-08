@@ -16,7 +16,7 @@ describe("Given function createUser",() =>{
             const result = createUser(email, onError, onSuccess);
             
             //Assert
-            expected(result).toEqual(expected);
+            expect(result).toEqual(expected);
         });
     });
 
@@ -25,13 +25,12 @@ describe("When function is called with value string",() =>{
 
              //Arrange
               const email = "jona7han@gmail.com";
-              const expected = "User with email jona7han@gmail.com has been correctly created";
 
               //Act
               const result = createUser(email, onError, onSuccess);
             
              //Assert
-             expected(result).toEqual(expected);    
+             expect(result).toEqual("Then the text User with email "+email+" has been correctly created should be printed in the returned");    
         });
     });
 });
