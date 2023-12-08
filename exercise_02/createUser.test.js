@@ -16,7 +16,7 @@ describe("Given function createUser",() =>{
             const result = createUser(email, onError, onSuccess);
             
             //Assert
-            expect(result).toEqual(expected);
+            expected(result).toEqual(expected);
         });
     });
 
@@ -31,7 +31,7 @@ describe("When function is called with value string",() =>{
               const result = createUser(email, onError, onSuccess);
             
              //Assert
-             expect(result).toEqual(expected);    
+             expected(result).toEqual(expected);    
         });
     });
 });
