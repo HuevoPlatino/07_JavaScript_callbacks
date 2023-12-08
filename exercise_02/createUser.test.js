@@ -11,7 +11,7 @@ describe("Given function createUser",() =>{
             const result = createUser('', onError, onSuccess);
             
             //Assert
-            expect(result).toEqual('error: user not created');
+            expect(result).toEqual('Error: user not created');
         });
     });
 
@@ -25,7 +25,8 @@ describe("When function is called with value string",() =>{
               const result = createUser(email, onError, onSuccess);
             
              //Assert
-             expect(result).toEqual("Then the text User with email "+email+" has been correctly created should be printed in the returned");    
+             expect(result).toEqual("User with email jona7han@gmail.com has been correctly created"
+             );    
         });
     });
 });
