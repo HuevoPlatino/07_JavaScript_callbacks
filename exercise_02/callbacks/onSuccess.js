@@ -14,10 +14,14 @@
  * @param {string} email
  * @returns string
  */
+// onSuccess.js
 function onSuccess(email) {
+
+    const successMessage = `User with email ${email} has been correctly created`;
+
+    console.log(successMessage);
     
-    console.log(`User with email ${email} has been correctly created`);
-    return console.log(`User with email ${email} has been correctly created`);
+    return successMessage;
 }
 
 export default onSuccess;

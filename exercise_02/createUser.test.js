@@ -7,16 +7,11 @@ import onSuccess from "./callbacks/onSuccess.js";
 describe("Given function createUser",() =>{
     describe("When function is called with value empty",() =>{
         test("Then it should return 'Error: user not created'",() =>{
-
-            //Arrange
-            const email = " ";
-            const expected = "Error: user not created";
-
             //Act
-            const result = createUser(email, onError, onSuccess);
+            const result = createUser('', onError, onSuccess);
             
             //Assert
-            expect(result).toEqual(expected);
+            expect(result).toEqual('error: user not created');
         });
     });
 

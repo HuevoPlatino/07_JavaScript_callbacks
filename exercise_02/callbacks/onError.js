@@ -13,10 +13,15 @@
  * @returns string
  */
 
+// onError.js
 function onError() {
 
-    return console.log('Error: user not created');
+    const errorMessage = 'Error: user not created';
 
-    }
+    console.log(errorMessage);
+    
+    return errorMessage;
+}
 
 export default onError;
+
