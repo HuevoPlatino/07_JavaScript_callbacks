@@ -15,6 +15,8 @@
  * @returns string
  */
 function onSuccess(email) {
+    
+    console.log(`User with email ${email} has been correctly created`);
     return console.log(`User with email ${email} has been correctly created`);
 }
 
