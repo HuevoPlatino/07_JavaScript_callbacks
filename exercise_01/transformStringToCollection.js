@@ -12,3 +12,21 @@
  * output
  *  - array
  */
+
+/**
+ * this function receives a value and two callbacks
+ * @param {any} value 
+ * @param {function} onError 
+ * @param {function} onSuccess 
+ * @returns array
+ */
+function transformStringToCollection(value, onError, onSuccess) {
+    if (typeof value !== 'string' || value === '') {
+        return onError();
+    } 
+        return onSuccess(value);
+    
+
+}
+
+export default transformStringToCollection;
