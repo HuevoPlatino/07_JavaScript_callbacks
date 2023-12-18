@@ -1,33 +1,105 @@
+
 import createUser from "./createUser.js";
-import onError from "./callbacks/onError.js";
-import onSuccess from "./callbacks/onSuccess.js";
+import {validateString} from "../helpers/validateString.js";
 
+describe("Given function createUser", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
+  const mockOnError = jest
+    .fn()
+    .mockImplementation(() => "Error: user not created");
+  const mockOnSuccess = jest
+    .fn()
+    .mockImplementation(
+      (email) => `User with email ${email} has been correctly created`
+    );
+  describe("When the function is called with an empty string value", () => {
+    test("Then the text Error: user not created should be returned.", () => {
+      // Arrange
+      const email = "";
 
-describe("Given function createUser",() =>{
-    describe("When function is called with value empty",() =>{
-        test("Then it should return 'Error: user not created'",() =>{
-            //Act
-            const result = createUser('', onError, onSuccess);
-            
-            //Assert
-            expect(result).toEqual('Error: user not created');
-        });
+      // Act
+      const result = createUser(email, mockOnError, mockOnSuccess);
+
+      // Assert
+      expect(result).toBe("Error: user not created");
+      expect(mockOnError).toHaveBeenCalledTimes(1);
     });
+  });
+  describe("When the function is called with a value of type string", () => {
+    const email = "Jona7han04@gmail.com";
+    test(
+      "Then the text User with email " +
+        email +
+        " has been correctly created should be returned.",
+      () => {
+        // Arrange
+        const email = "Jona7han04@gmail.com";
+        const spyOnMathRandom = jest.spyOn(Math, "random");
+        spyOnMathRandom.mockReturnValueOnce(0.2456322);
 
-describe("When function is called with value string",() =>{
-    test("Then it should return 'User with email {email} has been correctly created'",() =>{
+        // Act
+        const result = createUser(email, mockOnError, mockOnSuccess);
 
-             //Arrange
-              const email = "jona7han@gmail.com";
+        // Assert
+        expect(result).toBe("Error: user not created");
+        expect(mockOnError).toHaveBeenCalledTimes(1);
+      }
+    );
+    test(
+      "Then the text User with email " +
+        email +
+        " has been correctly created should be returned.",
+      () => {
+        // Arrange
+        const email = "Jona7han04@gmail.com";
+        const spyOnMathRandom = jest.spyOn(Math, "random");
+        spyOnMathRandom.mockReturnValueOnce(0.5);
 
-              //Act
-              const result = createUser(email, onError, onSuccess);
-            
-             //Assert
-             expect(result).toEqual("User with email jona7han@gmail.com has been correctly created"
-             );    
-        });
+        // Act
+        const result = createUser(email, mockOnError, mockOnSuccess);
+
+        // Assert
+        expect(result).toBe(
+          `User with email ${email} has been correctly created`
+        );
+        expect(mockOnSuccess).toHaveBeenCalledTimes(1);
+      }
+    );
+    test(
+      "Then the text User with email " +
+        email +
+        " has been correctly created should be returned.",
+      () => {
+        // Arrange
+        const email = "Jona7han04@gmail.com";
+        const spyOnMathRandom = jest.spyOn(Math, "random");
+        spyOnMathRandom.mockReturnValueOnce(0.9);
+
+        // Act
+        const result = createUser(email, mockOnError, mockOnSuccess);
+
+        // Assert
+        expect(result).toBe(
+          `User with email ${email} has been correctly created`
+        );
+        expect(mockOnError).not.toHaveBeenCalled();
+        expect(mockOnSuccess).toHaveBeenCalledTimes(1);
+      }
+    );
+  });
+  describe("When the function is called with a value of type string", () => {
+    test("Then a boolean should be returned.", () => {
+      // Arrange
+      const value = "Jona7han04@gmail.com";
+
+      // Act
+      const result = validateString(value);
+
+      // Assert
+      expect(result).toBe(true);
     });
+  });
 });
-

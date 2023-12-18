@@ -38,6 +38,6 @@ transformStringToCollection(inputSrting4, onError, onSuccess);
 
 console.log('Test 5');
 
-const inputSrting5 = 'hola buena tarde soy pepe';
+const inputSrting5 = 'Woow is red';
 
 transformStringToCollection(inputSrting5, onError, onSuccess);
